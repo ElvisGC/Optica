@@ -1,0 +1,108 @@
+@model IEnumerable<Optica.Models.Proforma>
+@{
+    ViewData["Title"] = "Carrito de Compras";
+}
+
+<section id="catalogue" class="catalogue section-bg" style="text-align: center;">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 data-aos="fade-in">Carrito de Compras</h2>
+          
+        </div>
+
+
+    <div class="row catalogue-container" data-aos="fade-up">
+
+    <table class="table table-hover">
+    <thead class="tables">
+        <tr style="color: white;">
+                <th scope="col">
+                    Imagen
+                </th>
+                <th scope="col">
+                   Codigo
+                </th>
+                <th scope="col">
+                    Cantidad
+                </th>
+                <th scope="col">
+                    Precio Unit
+                </th>
+               
+        </tr>
+    </thead>
+	@foreach (var item in Model)
+	{
+        //@if (item.Email == @User.Identity.Name)
+        //{
+            <tr>
+            <td>
+               <img class="img-responsive" width="150" height="180" style="margin-left: 20%;"
+                       src="~/Img/Productos/@item.Producto.Imagen" alt="@item.Producto.Imagen"  />
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producto.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                S/.
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a href="/Proforma/Editar/@item.ID" class="btn btn-dark">  Editar  </a>
+             
+             
+                <form action="/Proforma/borrarregion" method="post" class="d-inline-block">
+                    <input type="hidden" name="id" value="@item.ID" />
+                    
+                    <button  class="btn btn-danger"  class="btn btn-dark"> Eliminar </button> 
+
+                </form>
+
+
+                           
+                
+            </td>
+            </tr>
+            
+        //}
+	}
+    </tbody>    
+</table>
+@{
+          Decimal total = 0;
+
+         var contar = 0;
+      }
+      @foreach (var item in Model){
+         <tr>
+            @{
+               total = total + item.Price*item.Quantity;
+               contar++;
+            }
+         </tr>
+      }
+
+
+
+<div class="container">
+         <h4>Total: S/ @total </h4> 
+           
+            </div>
+           
+            </div>
+    </section>
+           
+            </div>
+    </section>
+
+      <div class="get-started" style="text-align: center;">
+                <a class="btn btn-primary" href="../Proforma/Proceso">  Realizar pago  </a>
+               <!--<button id="btt">  <a  style="text-align: center;border-radius: 4px;" asp-area="" asp-controller="Proforma" asp-action="Proceso">Confirmar</a></button>-->
+      </div>
+      <br>
+

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Optica.Models.Productos>
+
+
+<h1> Lista de Productos</h1>
+
+<p>
+<a asp-action="Create" class="btn btn-primary">Crear Nuevo Producto</a>
+</p>
+<table class="table" style="margin-left: 0%;">
+
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Familia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Linea)
+            </th>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.Diseño)
+            </th>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.Marca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Material)
+            </th>
+          
+          
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+         
+             <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+
+             <th>
+                  S/.
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+
+            <th scope="col">
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Familia)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.Linea)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Diseño)
+            </td>
+         
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material)
+            </td>
+          
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+        
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+
+            <td>
+                
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imagen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-dark" style="width: 100%;">Editar</a>
+                <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-secondary" style="width: 100%;">Detalles</a>
+                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger" style="width: 100%;">Borrar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+<p>
+    <a asp-action="Documento">GENERAR PDF</a>
+</p>
+

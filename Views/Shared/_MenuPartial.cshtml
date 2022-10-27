@@ -1,0 +1,62 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    @if(UserManager.GetUserName(User).Equals("admin@gmail.com"))//contra Admin12.
+    {
+
+ <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Productos" asp-action="Index">PRODUCTOS </a>
+    </li> 
+      <li class="nav-item">
+ <a class="nav-link text-dark" asp-area="" asp-controller="Catalogo" asp-action="Index"> VISTA_PREVIA</a>
+    </li> 
+   <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Citas" asp-action="Citas"> RPTE_CITAS </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Contactanos" asp-action="Index"> RPTE_CONTACTANOS  </a>
+    </li>
+
+ 
+}
+
+
+else{ 
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Contactanos" asp-action="Create"> CONTACTANOS</a>
+    </li> 
+   <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Catalogo" asp-action="Index"> CATÁLOGO </a>
+    </li> 
+      <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Nosotros" asp-action="Index"> NOSOTROS </a>
+    </li> 
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Citas" asp-action="NuevaCita"> CITAS</a>
+    </li> 
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Proforma" asp-action="Carrito"><img src="~/img/carro2.png" width="30"></a>
+    </li> 
+    
+
+ 
+}
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Contactanos" asp-action="Create">CONTACTANOS</a>
+    </li> 
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Catalogo" asp-action="Index"> CATÁLOGO </a>
+    </li> 
+
+   <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Nosotros" asp-action="Index"> NOSOTROS </a>
+    </li> 
+
+}
